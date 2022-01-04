@@ -72,13 +72,13 @@ async function run() {
 
         app.delete('/api/order/:id', async (req, res) => {
             const id = req.params.id;
-            const result = await orderCollection.deleteOne({ _id: ObjectId(id) });
+            const result = await ordersCollection.deleteOne({ _id: ObjectId(id) });
             res.json(result);
         });
 
         app.put('/api/order/:id', async (req, res) => {
             const id = req.params.id;
-            const result = await orderCollection.updateOne({ _id: ObjectId(id) }, { $set: { shipped: true } });
+            const result = await ordersCollection.updateOne({ _id: ObjectId(id) }, { $set: { shipped: true } });
             res.json(result);
         });
 
