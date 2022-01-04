@@ -91,7 +91,7 @@ async function run() {
         app.get('/api/checkAdmin/:email', async(req, res) => {
             const email = req.params.email;
             const user = await usersCollection.findOne({ email });
-            res.json(user.isAdmin);
+            res.json(user);
         });
     }
     finally {
