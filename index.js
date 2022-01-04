@@ -82,6 +82,12 @@ async function run() {
             res.json(result);
         });
 
+        app.post('/api/makeAdmin', async (req, res) => {
+            const user = req.body;
+            const result = await usersCollection.updateOne({ _id: ObjectId(user._id) }, { $set: { isAdmin: true } });
+            res.json(result);
+        });
+
     }
     finally {
         // await client.close();
