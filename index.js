@@ -83,8 +83,11 @@ async function run() {
         });
 
         app.post('/api/makeAdmin', async (req, res) => {
-            const user = req.body;
-            const result = await usersCollection.updateOne({ _id: ObjectId(user._id) }, { $set: { role: 'admin' } });
+        
+            const email = req.body.email;
+            console.log(email);
+            const result = await usersCollection.updateOne({ email }, { $set: { role: 'admin' } });
+        
             res.json(result);
         });
 
